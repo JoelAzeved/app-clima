@@ -90,13 +90,15 @@ body {
 
 /* Clima */
 #weather-data,
-#error-message,
 #loader,
 #suggestions {
   border-top: 1px solid #fff;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   text-align: center;
+}
+#error-message {
+  color: #000;
 }
 
 #weather-data h2 {
