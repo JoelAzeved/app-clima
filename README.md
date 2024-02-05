@@ -1,4 +1,4 @@
-<h1> align="center" style="font-weight: bold;">App clima 💻</h1>
+<h1 align="center" style="font-weight: bold;">App clima 💻</h1>
 
 
 <p align="center">
