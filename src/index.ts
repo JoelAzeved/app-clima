@@ -61,11 +61,6 @@ const suggestionButtons = document.querySelectorAll(
   '#suggestions button',
 ) as NodeListOf<Element>;
 
-//Loader
-const toggleLoader = (): void => {
-  loader.classList.add('hide');
-};
-
 // Limpa input
 const clearInput = (): void => {
   cityInput.value = ' ';
@@ -77,7 +72,6 @@ const showErrorMessage = (): void => {
 };
 
 const getDataWeather = async (city: string): Promise<WeatherData> => {
-  toggleLoader();
   const apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
   try {
@@ -87,7 +81,7 @@ const getDataWeather = async (city: string): Promise<WeatherData> => {
       throw new Error(`Erro na requisição: ${res.statusText}`);
     }
     const data: WeatherData = await res.json();
-    toggleLoader();
+
     clearInput();
     return data;
   } catch (error) {
@@ -136,8 +130,7 @@ const showData = async (city: string) => {
   }
 };
 
-btn.addEventListener('click', (e: MouseEvent) => {
-  
+btn.addEventListener('click', () => {
   const city = cityInput.value as string;
   getDataWeather(city);
 });
