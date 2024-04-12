@@ -142,7 +142,6 @@ const showData = async (city: string) => {
 btn.addEventListener('click', () => {
   let city = cityInput.value as string;
   city = removingSpecialCharacters(city).toLowerCase();
-  console.log(city);
   showData(city);
 });
 
