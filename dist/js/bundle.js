@@ -90,7 +90,7 @@ const showData = (city) => __awaiter(void 0, void 0, void 0, function* () {
 });
 btn.addEventListener('click', () => {
     const city = cityInput.value;
-    getDataWeather(city);
+    showData(city);
 });
 cityInput.addEventListener('keyup', (e) => {
     if (e.code === 'Enter') {
