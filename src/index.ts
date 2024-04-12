@@ -71,6 +71,15 @@ const showErrorMessage = (): void => {
   errorMessageContainer.classList.remove('hide');
 };
 
+const removingSpecialCharacters = (city: string) => {
+  // Substitui caracteres acentuados por suas versões não acentuadas
+  city = city.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // Remove caracteres especiais
+  const regex = /[^a-zA-Z0-9\s]/g;
+  return city.replace(regex, '');
+};
+
 const getDataWeather = async (city: string): Promise<WeatherData> => {
   const apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
@@ -88,11 +97,6 @@ const getDataWeather = async (city: string): Promise<WeatherData> => {
     console.log(error);
     throw error;
   }
-};
-
-const removingSpecialCharacters = (city: string) => {
-  const regex = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/g;
-  return city.replace(regex, '');
 };
 
 const hideInformation = (): void => {
@@ -136,17 +140,16 @@ const showData = async (city: string) => {
 };
 
 btn.addEventListener('click', () => {
-  const city = cityInput.value as string;
-  city.toLowerCase();
-  removingSpecialCharacters(city);
+  let city = cityInput.value as string;
+  city = removingSpecialCharacters(city).toLowerCase();
+  console.log(city);
   showData(city);
 });
 
 cityInput.addEventListener('keypress', (e: KeyboardEvent) => {
   if (e.keyCode === 13) {
-    const city = (e.target as HTMLInputElement).value;
-    city.toLowerCase();
-    removingSpecialCharacters(city);
+    let city = (e.target as HTMLInputElement).value;
+    city = removingSpecialCharacters(city).toLowerCase();
     showData(city);
   }
 });
