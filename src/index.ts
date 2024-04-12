@@ -136,7 +136,7 @@ const showData = async (city: string) => {
 btn.addEventListener('click', (e: MouseEvent) => {
   e.preventDefault();
   const city = cityInput.value as string;
-  getDataWeather(city);
+  showData(city);
 });
 
 cityInput.addEventListener('keyup', (e: KeyboardEvent) => {
