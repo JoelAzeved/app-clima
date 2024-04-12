@@ -132,7 +132,7 @@ const showData = async (city: string) => {
 
 btn.addEventListener('click', () => {
   const city = cityInput.value as string;
-  getDataWeather(city);
+  showData(city);
 });
 
 cityInput.addEventListener('keyup', (e: KeyboardEvent) => {
