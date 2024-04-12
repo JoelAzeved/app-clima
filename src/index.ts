@@ -137,6 +137,7 @@ const showData = async (city: string) => {
 
 btn.addEventListener('click', () => {
   const city = cityInput.value as string;
+  city.toLowerCase();
   removingSpecialCharacters(city);
   showData(city);
 });
@@ -144,6 +145,7 @@ btn.addEventListener('click', () => {
 cityInput.addEventListener('keypress', (e: KeyboardEvent) => {
   if (e.keyCode === 13) {
     const city = (e.target as HTMLInputElement).value;
+    city.toLowerCase();
     removingSpecialCharacters(city);
     showData(city);
   }
