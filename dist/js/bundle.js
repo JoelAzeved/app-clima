@@ -88,10 +88,9 @@ const showData = (city) => __awaiter(void 0, void 0, void 0, function* () {
         throw error;
     }
 });
-btn.addEventListener('click', (e) => {
-    e.preventDefault();
+btn.addEventListener('click', () => {
     const city = cityInput.value;
-    showData(city);
+    getDataWeather(city);
 });
 cityInput.addEventListener('keyup', (e) => {
     if (e.code === 'Enter') {
