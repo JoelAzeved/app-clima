@@ -94,12 +94,14 @@ const showData = (city) => __awaiter(void 0, void 0, void 0, function* () {
 });
 btn.addEventListener('click', () => {
     const city = cityInput.value;
+    city.toLowerCase();
     removingSpecialCharacters(city);
     showData(city);
 });
 cityInput.addEventListener('keypress', (e) => {
     if (e.keyCode === 13) {
         const city = e.target.value;
+        city.toLowerCase();
         removingSpecialCharacters(city);
         showData(city);
     }
