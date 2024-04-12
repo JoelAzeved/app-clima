@@ -135,8 +135,8 @@ btn.addEventListener('click', () => {
   showData(city);
 });
 
-cityInput.addEventListener('keyup', (e: KeyboardEvent) => {
-  if (e.code === 'Enter') {
+cityInput.addEventListener('keypress', (e: KeyboardEvent) => {
+  if (e.keyCode === 13) {
     const city = (e.target as HTMLInputElement).value;
 
     showData(city);
