@@ -86,7 +86,6 @@ const getDataWeather = async (city: string): Promise<WeatherData> => {
     }
     const data: WeatherData = await res.json();
     return data;
-    clearInput();
   } catch (error) {
     console.log(error);
     throw error;
@@ -134,8 +133,9 @@ const showData = async (city: string) => {
 };
 
 btn.addEventListener('click', (e: MouseEvent) => {
-  e.preventDefault();
+  
   const city = cityInput.value as string;
+  
   showData(city);
 });
 
