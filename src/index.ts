@@ -85,9 +85,8 @@ const getDataWeather = async (city: string): Promise<WeatherData> => {
       throw new Error(`Erro na requisição: ${res.statusText}`);
     }
     const data: WeatherData = await res.json();
-    toggleLoader();
-    clearInput();
     return data;
+    clearInput();
   } catch (error) {
     console.log(error);
     throw error;
