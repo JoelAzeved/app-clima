@@ -99,6 +99,10 @@ body {
 }
 #error-message {
   color: #520606;
+<<<<<<< HEAD
+=======
+;
+>>>>>>> 7447175cfd3663224b18cf42ebf0fe524096a83c
 }
 
 #weather-data h2 {
