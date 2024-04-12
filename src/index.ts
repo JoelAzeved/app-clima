@@ -52,7 +52,6 @@ const weatherContainer = document.querySelector(
 const errorMessageContainer = document.querySelector(
   '#error-message',
 ) as HTMLDivElement;
-const loader = document.querySelector('#loader') as HTMLDivElement;
 
 const suggestionContainer = document.querySelector(
   '#suggestions',
@@ -61,11 +60,6 @@ const suggestionContainer = document.querySelector(
 const suggestionButtons = document.querySelectorAll(
   '#suggestions button',
 ) as NodeListOf<Element>;
-
-//Loader
-const toggleLoader = (): void => {
-  loader.classList.add('hide');
-};
 
 // Limpa input
 const clearInput = (): void => {
@@ -78,7 +72,6 @@ const showErrorMessage = (): void => {
 };
 
 const getDataWeather = async (city: string): Promise<WeatherData> => {
-  toggleLoader();
   const apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
   try {
@@ -88,7 +81,7 @@ const getDataWeather = async (city: string): Promise<WeatherData> => {
       throw new Error(`Erro na requisição: ${res.statusText}`);
     }
     const data: WeatherData = await res.json();
-    toggleLoader();
+
     clearInput();
     return data;
   } catch (error) {
@@ -140,7 +133,7 @@ const showData = async (city: string) => {
 btn.addEventListener('click', (e: MouseEvent) => {
   e.preventDefault();
   const city = cityInput.value as string;
-  getDataWeather(city);
+  showData(city);
 });
 
 cityInput.addEventListener('keyup', (e: KeyboardEvent) => {

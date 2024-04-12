@@ -32,13 +32,8 @@ const umidityElement = document.querySelector('#umidity span');
 const windElement = document.querySelector('#wind span');
 const weatherContainer = document.querySelector('#weather-data');
 const errorMessageContainer = document.querySelector('#error-message');
-const loader = document.querySelector('#loader');
 const suggestionContainer = document.querySelector('#suggestions');
 const suggestionButtons = document.querySelectorAll('#suggestions button');
-//Loader
-const toggleLoader = () => {
-    loader.classList.add('hide');
-};
 // Limpa input
 const clearInput = () => {
     cityInput.value = ' ';
@@ -48,7 +43,6 @@ const showErrorMessage = () => {
     errorMessageContainer.classList.remove('hide');
 };
 const getDataWeather = (city) => __awaiter(void 0, void 0, void 0, function* () {
-    toggleLoader();
     const apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
     try {
         const res = yield fetch(apiWeather);
@@ -57,7 +51,6 @@ const getDataWeather = (city) => __awaiter(void 0, void 0, void 0, function* () 
             throw new Error(`Erro na requisição: ${res.statusText}`);
         }
         const data = yield res.json();
-        toggleLoader();
         clearInput();
         return data;
     }
@@ -98,7 +91,7 @@ const showData = (city) => __awaiter(void 0, void 0, void 0, function* () {
 btn.addEventListener('click', (e) => {
     e.preventDefault();
     const city = cityInput.value;
-    getDataWeather(city);
+    showData(city);
 });
 cityInput.addEventListener('keyup', (e) => {
     if (e.code === 'Enter') {
