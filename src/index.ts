@@ -90,6 +90,11 @@ const getDataWeather = async (city: string): Promise<WeatherData> => {
   }
 };
 
+const removingSpecialCharacters = (city: string) => {
+  const regex = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/g;
+  return city.replace(regex, '');
+};
+
 const hideInformation = (): void => {
   errorMessageContainer.classList.add('hide');
   weatherContainer.classList.add('hide');
@@ -132,13 +137,14 @@ const showData = async (city: string) => {
 
 btn.addEventListener('click', () => {
   const city = cityInput.value as string;
+  removingSpecialCharacters(city);
   showData(city);
 });
 
 cityInput.addEventListener('keypress', (e: KeyboardEvent) => {
   if (e.keyCode === 13) {
     const city = (e.target as HTMLInputElement).value;
-
+    removingSpecialCharacters(city);
     showData(city);
   }
 });

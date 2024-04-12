@@ -59,6 +59,10 @@ const getDataWeather = (city) => __awaiter(void 0, void 0, void 0, function* () 
         throw error;
     }
 });
+const removingSpecialCharacters = (city) => {
+    const regex = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/g;
+    return city.replace(regex, '');
+};
 const hideInformation = () => {
     errorMessageContainer.classList.add('hide');
     weatherContainer.classList.add('hide');
@@ -90,11 +94,13 @@ const showData = (city) => __awaiter(void 0, void 0, void 0, function* () {
 });
 btn.addEventListener('click', () => {
     const city = cityInput.value;
+    removingSpecialCharacters(city);
     showData(city);
 });
 cityInput.addEventListener('keypress', (e) => {
     if (e.keyCode === 13) {
         const city = e.target.value;
+        removingSpecialCharacters(city);
         showData(city);
     }
 });
