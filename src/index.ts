@@ -62,10 +62,7 @@ const suggestionButtons = document.querySelectorAll(
   '#suggestions button',
 ) as NodeListOf<Element>;
 
-//Loader
-const toggleLoader = (): void => {
-  loader.classList.add('hide');
-};
+
 
 // Limpa input
 const clearInput = (): void => {
@@ -78,7 +75,7 @@ const showErrorMessage = (): void => {
 };
 
 const getDataWeather = async (city: string): Promise<WeatherData> => {
-  toggleLoader();
+  
   const apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
   try {
